@@ -1,0 +1,21 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "seefoodbot",
+      "image": "974359815377.dkr.ecr.us-east-1.amazonaws.com/seefoodbot:latest",
+      "update": "true",
+      "environment" : [
+          { "name" : "FLASK_APP", "value" : "app.py" }
+      ],
+      "essential": true,
+      "memory": 128,
+      "portMappings": [
+        {
+          "containerPort": 5000,
+          "hostPort": 80
+        }
+      ]
+    }
+  ]
+}
