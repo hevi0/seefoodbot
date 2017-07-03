@@ -6,7 +6,8 @@
       "image": "974359815377.dkr.ecr.us-east-1.amazonaws.com/seefoodbot:latest",
       "update": "true",
       "environment" : [
-          { "name" : "FLASK_APP", "value" : "app.py" }
+          { "name" : "FLASK_APP", "value" : "app.py" },
+          { "name" : "TF_CPP_MIN_LOG_LEVEL", "value" : "2" }
       ],
       "essential": true,
       "memory": 128,
