@@ -4,7 +4,15 @@ itsdangerous==0.24
 Jinja2==2.9.6
 MarkupSafe==1.0
 numpy==1.12.1
+olefile==0.44
+Pillow==4.2.0
 protobuf==3.2.0
 six==1.10.0
 tensorflow==1.1.0
+tflearn==0.3.2
 Werkzeug==0.12.2
+pyaml==16.9.0
+PyYAML==3.12
+requests==2.11.1
+slackclient==1.0.2
+websocket-client==0.37.0
