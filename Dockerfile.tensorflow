@@ -1,5 +1,7 @@
 #FROM python:3.6-alpine
 FROM ubuntu:16.04
+RUN mkdir -p /opt/app
+COPY hotdog-classifier.* /opt/app/
 
 # Pick up some TF dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends software-properties-common && add-apt-repository ppa:jonathonf/python-3.6 && \
