@@ -100,6 +100,9 @@ def _event_handler(event_type, slack_event):
     # Return a helpful error message
     return make_response(message, 200, {"X-Slack-No-Retry": 1})
 
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
 
 @app.route("/install", methods=["GET"])
 def pre_install():
