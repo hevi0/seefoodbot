@@ -7,6 +7,6 @@ services:
     restart: always
     ports:
       - "5000:5000"
-    environment:
-      - FLASK_APP=app.py
+    env_file:
+      - web.env
     container_name: seefoodbot
