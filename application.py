@@ -10,7 +10,7 @@ from flask import Flask, request, make_response, render_template
 pyBot = bot.Bot()
 slack = pyBot.client
 
-app = Flask(__name__)
+application = app = Flask(__name__)
 
 
 def _event_handler(event_type, slack_event):
@@ -173,4 +173,4 @@ def hears():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    application.run(host='0.0.0.0')
