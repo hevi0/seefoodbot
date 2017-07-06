@@ -13,4 +13,4 @@ COPY . /opt/app
 
 EXPOSE 5000
 
-CMD [ "gunicorn", "-k gevent", "-w 4", "-b 0.0.0.0:5000", "-t 30", "application:application" ]
+CMD [ "gunicorn", "-k gevent", "-w 4", "-b 0.0.0.0:5000", "-t 120", "application:application" ]
