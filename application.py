@@ -5,6 +5,7 @@ A routing layer for the onboarding bot tutorial built using
 """
 import json
 import bot
+import os
 from flask import Flask, request, make_response, render_template
 
 pyBot = bot.Bot()
@@ -56,7 +57,7 @@ def _event_handler(event_type, slack_event):
             print(str(slack_event['event']))
             user_id = slack_event["event"]["user"]
             channel = slack_event["event"]["channel"]
-            pyBot.check_links(team_id, user_id, channel, images, 'xoxb-186830634694-4TPkBAf4VT3dCnaXBf7VnAqk')
+            pyBot.check_links(team_id, user_id, channel, images, os.environ.get("BOT_TOKEN"))
             return make_response("Hotdog Sent", 200,)
     # ================ Team Join Events =============== #
     # When the user first joins a team, the type of event will be team_join
@@ -173,4 +174,4 @@ def hears():
 
 
 if __name__ == '__main__':
-    application.run(host='0.0.0.0')
+    application.run(host='0.0.0.0', debug=True)
