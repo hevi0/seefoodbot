@@ -1,12 +1,31 @@
 version: "2"
 services:
+  seefoodbotnginx:
+      image: 974359815377.dkr.ecr.us-east-1.amazonaws.com/seefoodbotnginx:latest
+      build: ./nginx
+      links:
+          - seefoodbot1
+          - seefoodbot2
+      ports:
+          - "8080:80"
+      container_name: seefoodbotnginx
 
-  seefoodbot:
+  seefoodbot1:
     image: 974359815377.dkr.ecr.us-east-1.amazonaws.com/seefoodbot:latest
     build: './'
     restart: always
     ports:
-      - "5000:5000"
+      - "5000"
     env_file:
       - web.env
-    container_name: seefoodbot
+    container_name: seefoodbot1
+
+  seefoodbot2:
+    image: 974359815377.dkr.ecr.us-east-1.amazonaws.com/seefoodbot:latest
+    build: './'
+    restart: always
+    ports:
+      - "5000"
+    env_file:
+      - web.env
+    container_name: seefoodbot2
