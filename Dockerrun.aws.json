@@ -48,5 +48,6 @@
         }
       ]
     }
-  ]
+  ],
+  "Logging": "/var/log/app.log"
 }
