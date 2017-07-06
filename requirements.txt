@@ -17,3 +17,4 @@ requests==2.11.1
 slackclient==1.0.2
 websocket-client==0.37.0
 gunicorn==19.7.1
+gevent==1.2.2
