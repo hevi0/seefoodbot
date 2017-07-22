@@ -131,9 +131,9 @@ def isHotdog(url, auth=None):
     img = boxed(img)
     data = np.array(img.getdata())/255.0
     data.resize(img.height, img.width, 3)
-    
+    print("running predict")
     predictions = model.predict(np.array([data]))
-    
+    print("predict done")
     maxClass = np.argmax(np.array(predictions).flatten())
     
     return True if (maxClass == 100) else False, maxClass.item(), np.array(predictions).flatten()
