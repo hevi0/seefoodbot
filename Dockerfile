@@ -6,7 +6,7 @@ WORKDIR /opt/app
 
 # Install app dependencies (Doing this first takes advantage of Docker's caching of layers)
 COPY requirements.txt /opt/app/
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt --default-timeout=100
 
 # Bundle app source
 COPY . /opt/app
@@ -14,5 +14,5 @@ COPY . /opt/app
 EXPOSE 5000
 
 #CMD [ "uwsgi" ]
-CMD [ "uwsgi", "--http", "0.0.0.0:5000", "--wsgi-file", "application.py", "--master", "--processes", "4", "--threads", "1" ]
+CMD [ "uwsgi", "--http", "0.0.0.0:5000", "--wsgi-file", "application.py", "--master", "--processes", "2", "--threads", "2" ]
 #CMD [ "gunicorn", "-k gevent", "-w 4", "-b 0.0.0.0:5000", "-t 300", "application:application" ]
