@@ -13,4 +13,6 @@ COPY . /opt/app
 
 EXPOSE 5000
 
-CMD [ "gunicorn", "-k gevent", "-w 4", "-b 0.0.0.0:5000", "-t 300", "application:application" ]
+#CMD [ "uwsgi" ]
+CMD [ "uwsgi", "--http", "0.0.0.0:5000", "--wsgi-file", "application.py", "--master", "--processes", "4", "--threads", "1" ]
+#CMD [ "gunicorn", "-k gevent", "-w 4", "-b 0.0.0.0:5000", "-t 300", "application:application" ]

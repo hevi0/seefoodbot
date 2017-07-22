@@ -2,7 +2,7 @@
   "AWSEBDockerrunVersion": 2,
   "containerDefinitions": [
     {
-      "name": "seefoodbot1",
+      "name": "seefoodbot",
       "image": "974359815377.dkr.ecr.us-east-1.amazonaws.com/seefoodbot:latest",
       "update": "true",
       "environment" : [
@@ -11,43 +11,10 @@
       "memory": 256,
       "portMappings": [
         {
+          "hostPort": 80,
           "containerPort": 5000
-        }
-      ]
-    },
-    {
-      "name": "seefoodbot2",
-      "image": "974359815377.dkr.ecr.us-east-1.amazonaws.com/seefoodbot:latest",
-      "update": "true",
-      "environment" : [
-      ],
-      "essential": true,
-      "memory": 256,
-      "portMappings": [
-        {
-          "containerPort": 5000
-        }
-      ]
-    },
-    {
-      "name": "seefoodbotnginx",
-      "image": "974359815377.dkr.ecr.us-east-1.amazonaws.com/seefoodbotnginx:latest",
-      "update": "true",
-      "links": [
-          "seefoodbot1",
-          "seefoodbot2"
-      ],
-      "environment" : [
-      ],
-      "essential": true,
-      "memory": 128,
-      "portMappings": [
-        {
-          "containerPort": 80,
-          "hostPort": 80
         }
       ]
     }
-  ],
-  "Logging": "/var/log/app.log"
+  ]
 }
