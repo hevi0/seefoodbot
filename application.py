@@ -6,13 +6,15 @@ A routing layer for the onboarding bot tutorial built using
 import json
 import bot
 import os
-from flask import Flask, request, make_response, render_template
+import hotdog
+from flask import Flask, request, make_response, render_template, Response, stream_with_context, current_app
 
-pyBot = bot.Bot()
-slack = pyBot.client
+
 
 application = app = Flask(__name__)
 
+pyBot = bot.Bot()
+slack = pyBot.client
 
 def _event_handler(event_type, slack_event):
     """
@@ -105,6 +107,10 @@ def _event_handler(event_type, slack_event):
 def hello_world():
     return 'Hello, World!'
 
+@app.route('/test')
+def test():
+    return pyBot.hotdog_test().__str__()
+
 @app.route("/install", methods=["GET"])
 def pre_install():
     """This route renders the installation page with 'Add to Slack' button."""
@@ -174,4 +180,4 @@ def hears():
 
 
 if __name__ == '__main__':
-    application.run(host='0.0.0.0', debug=True)
+    application.run(host='0.0.0.0', use_reloader=False, debug=True)

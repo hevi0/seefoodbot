@@ -4,6 +4,7 @@ Python Slack Bot class for use with the pythOnBoarding app
 """
 import os
 import message
+from flask import current_app
 
 from slackclient import SlackClient
 import hotdog
@@ -317,3 +318,5 @@ class Bot(object):
                                             icon_emoji=self.emoji,
                                             text=message_obj.text)
 
+    def hotdog_test(self):
+        return hotdog.containsHotdog(['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6sxTM1t_fj5xm12xIKY8oVXDNEnD1tzB_0Y3e0Cbl5ZNeTAt8'], None)
