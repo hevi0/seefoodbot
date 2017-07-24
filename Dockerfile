@@ -12,6 +12,7 @@ RUN pip install -r requirements.txt --default-timeout=100
 COPY . /opt/app
 
 EXPOSE 5000
+EXPOSE 5001
 
 #CMD [ "uwsgi" ]
 #uwsgi --http 0.0.0.0:5000 --wsgi-file application.py --master --processes 2 --threads 2
