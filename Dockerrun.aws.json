@@ -11,20 +11,7 @@
       "memory": 128,
       "portMappings": [
         {
-          "containerPort": 5000
-        }
-      ]
-    },
-    {
-      "name": "seefoodbot2",
-      "image": "974359815377.dkr.ecr.us-east-1.amazonaws.com/seefoodbot:latest",
-      "update": "true",
-      "environment" : [
-      ],
-      "essential": true,
-      "memory": 128,
-      "portMappings": [
-        {
+          "hostPort": 5000,
           "containerPort": 5000
         }
       ]
@@ -34,8 +21,7 @@
       "image": "974359815377.dkr.ecr.us-east-1.amazonaws.com/seefoodbotnginx:latest",
       "update": "true",
       "links": [
-          "seefoodbot1",
-          "seefoodbot2"
+          "seefoodbot1"
       ],
       "environment" : [
       ],
