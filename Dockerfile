@@ -18,4 +18,4 @@ EXPOSE 5001
 #uwsgi --http 0.0.0.0:5000 --wsgi-file application.py --master --processes 2 --threads 2
 #CMD [ "uwsgi", "--http", "0.0.0.0:5000", "--wsgi-file", "application.py", "--master", "--processes", "2", "--threads", "2" ]
 #gunicorn -k eventlet -w 4 -b 0.0.0.0:5000 application:application
-CMD [ "gunicorn", "-k", "eventlet", "-w", "4", "-b", "0.0.0.0:5000", "-t", "300", "application:application" ]
+CMD [ "gunicorn", "-k", "eventlet", "-w", "4", "-b", "0.0.0.0:5000", "--keep-alive", "75", "-t", "300", "application:application" ]
