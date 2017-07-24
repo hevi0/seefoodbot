@@ -20,6 +20,9 @@
       "name": "seefoodbotnginx",
       "image": "974359815377.dkr.ecr.us-east-1.amazonaws.com/seefoodbotnginx:latest",
       "update": "true",
+      "links": [
+        "seefoodbot1"
+      ],
       "environment" : [
       ],
       "essential": true,
