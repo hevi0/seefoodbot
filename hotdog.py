@@ -20,6 +20,7 @@ from PIL import Image, ImageOps
 from io import BytesIO
 import requests
 import random
+import sys
 
 def load_data():
     # Load the data set
@@ -139,9 +140,9 @@ def isHotdog(url, auth=None):
     img = boxed(img)
     data = np.array(img.getdata())/255.0
     data.resize(img.height, img.width, 3)
-    print("running predict")
+    print("running predict", file=sys.stderr)
     predictions = model.predict(np.array([data]))
-    print("predict done")
+    print("predict done", file=sys.stderr)
     maxClass = np.argmax(np.array(predictions).flatten())
     
     return True if (maxClass == 100) else False, maxClass.item(), np.array(predictions).flatten()

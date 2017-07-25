@@ -6,6 +6,7 @@ A routing layer for the onboarding bot tutorial built using
 import json
 import bot
 import os
+import sys
 import hotdog
 from flask import Flask, request, make_response, render_template, Response, stream_with_context, current_app
 
@@ -36,7 +37,7 @@ def _event_handler(event_type, slack_event):
     """
     team_id = slack_event["team_id"]
 
-    print("event_type: " + event_type)
+    print("event_type: " + event_type, file=sys.stderr)
     print(str(slack_event['event']))
     if 'message' in slack_event['event'] and 'attachments' in slack_event['event']['message']:
         images = []
@@ -56,7 +57,7 @@ def _event_handler(event_type, slack_event):
         if 'url_private' in att:
             images.append(att['url_private'])
         if len(images) > 0:
-            print(str(slack_event['event']))
+            print(str(slack_event['event']), file=sys.stderr)
             user_id = slack_event["event"]["user"]
             channel = slack_event["event"]["channel"]
             pyBot.check_links(team_id, user_id, channel, images, os.environ.get("BOT_TOKEN"))

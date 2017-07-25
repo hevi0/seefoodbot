@@ -3,6 +3,7 @@
 Python Slack Bot class for use with the pythOnBoarding app
 """
 import os
+import sys
 import message
 from flask import current_app
 
@@ -274,7 +275,7 @@ class Bot(object):
         message_obj.timestamp = post_message["ts"]
 
     def check_links(self, team_id, user_id, channel, links, auth=None):
-        print("begin check_links fn")
+        print("begin check_links fn", file=sys.stderr)
         if self.messages.get(team_id):
             # Then we'll update the message dictionary with a key for the
             # user id we've recieved and a value of a new message object
@@ -306,12 +307,12 @@ class Bot(object):
         # Update the message's attachments by switching in incomplete
         # attachment with the completed one above.
         message_obj.emoji_attachment.update(completed_attachments)
-        print("checking link for hotdog")
+        print("checking link for hotdog", file=sys.stderr)
         if hotdog.containsHotdog(links, auth):
             message_obj.text = "Hotdog!"
         else:
             message_obj.text = "Not hotdog!"
-        print("check_links posting message")
+        print("check_links posting message", file=sys.stderr)
         post_message = self.client.api_call("chat.postMessage",
                                             channel=message_obj.channel,
                                             username=self.name,
